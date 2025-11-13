@@ -1,0 +1,215 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodMap.Views.HomePage"
+             BackgroundColor="#FFFFFF"
+             Shell.NavBarIsVisible="False">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<!-- Header -->
+		<Grid Grid.Row="0"
+              BackgroundColor="#B6D4B0"
+              Padding="20,50,20,15">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- Menu Icon (3 lines) -->
+			<Grid Grid.Column="0"
+                  HeightRequest="30"
+                  WidthRequest="30"
+                  VerticalOptions="Center">
+				<VerticalStackLayout Spacing="5" VerticalOptions="Center">
+					<BoxView HeightRequest="3" WidthRequest="30" Color="#FFFFFF" CornerRadius="1.5"/>
+					<BoxView HeightRequest="3" WidthRequest="30" Color="#FFFFFF" CornerRadius="1.5"/>
+					<BoxView HeightRequest="3" WidthRequest="30" Color="#FFFFFF" CornerRadius="1.5"/>
+				</VerticalStackLayout>
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="OnMenuTapped"/>
+				</Grid.GestureRecognizers>
+			</Grid>
+
+			<!-- User Name -->
+			<Label Grid.Column="1"
+                   Text="Alex"
+                   FontFamily="Roboto"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#FFFFFF"
+                   VerticalOptions="Center"
+                   Margin="15,0,0,0"/>
+
+			<!-- Cart Icon with Badge -->
+			<Grid Grid.Column="2" VerticalOptions="Center">
+				<!-- Cart Icon SVG-like using shapes -->
+				<Grid HeightRequest="30" WidthRequest="30">
+					<!-- Simple cart representation -->
+					<Path Data="M 5,8 L 8,8 L 10,20 L 25,20 L 28,12 L 10,12"
+                          Stroke="#FFFFFF"
+                          StrokeThickness="2"
+                          Fill="Transparent"/>
+					<Ellipse HeightRequest="3" WidthRequest="3" Fill="#FFFFFF"
+                             HorizontalOptions="Start" VerticalOptions="End"
+                             Margin="12,0,0,3"/>
+					<Ellipse HeightRequest="3" WidthRequest="3" Fill="#FFFFFF"
+                             HorizontalOptions="End" VerticalOptions="End"
+                             Margin="0,0,8,3"/>
+				</Grid>
+
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="OnCartTapped"/>
+				</Grid.GestureRecognizers>
+
+				<!-- Badge -->
+				<Border BackgroundColor="#FFFFFF"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12"
+                        HeightRequest="22"
+                        WidthRequest="22"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        Margin="0,-5,-5,0">
+					<Label Text="0"
+                           FontFamily="Roboto"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           TextColor="#3A2A97"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+				</Border>
+			</Grid>
+		</Grid>
+
+		<!-- Content -->
+		<ScrollView Grid.Row="1">
+			<VerticalStackLayout Spacing="0">
+
+				<!-- Super marché Card -->
+				<Grid HeightRequest="250">
+					<Image Source="supermarket.jpg"
+                           Aspect="AspectFill">
+						<Image.GestureRecognizers>
+							<TapGestureRecognizer Tapped="OnSupermarketTapped"/>
+						</Image.GestureRecognizers>
+					</Image>
+
+					<!-- Overlay semi-transparent -->
+					<BoxView Color="#FFFFFF" Opacity="0.3"/>
+
+					<Label Text="Super marché"
+                           FontFamily="Roboto"
+                           FontSize="36"
+                           FontAttributes="Bold"
+                           TextColor="#3A2A97"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+				</Grid>
+
+				<!-- Restaurant Card -->
+				<Grid HeightRequest="250">
+					<Image Source="restaurant.jpg"
+                           Aspect="AspectFill">
+						<Image.GestureRecognizers>
+							<TapGestureRecognizer Tapped="OnRestaurantTapped"/>
+						</Image.GestureRecognizers>
+					</Image>
+
+					<!-- Overlay semi-transparent -->
+					<BoxView Color="#FFFFFF" Opacity="0.3"/>
+
+					<Label Text="Restaurant"
+                           FontFamily="Roboto"
+                           FontSize="36"
+                           FontAttributes="Bold"
+                           TextColor="#3A2A97"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+				</Grid>
+
+			</VerticalStackLayout>
+		</ScrollView>
+
+		<!-- Bottom Navigation Bar -->
+		<Grid Grid.Row="2"
+              BackgroundColor="#1A1A1A"
+              Padding="0,10,0,25"
+              ColumnSpacing="0">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- Home Icon -->
+			<Grid Grid.Column="0" HorizontalOptions="Center">
+				<Path Data="M 12,3 L 2,12 L 5,12 L 5,20 L 10,20 L 10,15 L 14,15 L 14,20 L 19,20 L 19,12 L 22,12 Z"
+                      Fill="#FFFFFF"
+                      HeightRequest="24"
+                      WidthRequest="24"
+                      Aspect="Uniform"/>
+			</Grid>
+
+			<!-- Bookmark Icon -->
+			<Grid Grid.Column="1" HorizontalOptions="Center">
+				<Path Data="M 5,2 L 19,2 L 19,22 L 12,18 L 5,22 Z"
+                      Stroke="#FFFFFF"
+                      StrokeThickness="2"
+                      Fill="Transparent"
+                      HeightRequest="24"
+                      WidthRequest="24"
+                      Aspect="Uniform"/>
+			</Grid>
+
+			<!-- Search Icon -->
+			<Grid Grid.Column="2" HorizontalOptions="Center">
+				<Path Data="M 9,2 A 7,7 0 1,1 9,16 A 7,7 0 1,1 9,2 M 14,14 L 22,22"
+                      Stroke="#FFFFFF"
+                      StrokeThickness="2"
+                      Fill="Transparent"
+                      HeightRequest="24"
+                      WidthRequest="24"
+                      Aspect="Uniform"/>
+			</Grid>
+
+			<!-- Calendar Icon with "12" -->
+			<Grid Grid.Column="3" HorizontalOptions="Center">
+				<Border BackgroundColor="Transparent"
+                        StrokeThickness="2"
+                        Stroke="#FFFFFF"
+                        StrokeShape="RoundRectangle 6"
+                        HeightRequest="28"
+                        WidthRequest="28">
+					<Label Text="12"
+                           FontFamily="Roboto"
+                           FontSize="14"
+                           FontAttributes="Bold"
+                           TextColor="#FFFFFF"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+				</Border>
+			</Grid>
+
+			<!-- More Icon (3 dots) -->
+			<Grid Grid.Column="4" HorizontalOptions="Center">
+				<HorizontalStackLayout Spacing="3" HorizontalOptions="Center" VerticalOptions="Center">
+					<Ellipse HeightRequest="4" WidthRequest="4" Fill="#FFFFFF"/>
+					<Ellipse HeightRequest="4" WidthRequest="4" Fill="#FFFFFF"/>
+					<Ellipse HeightRequest="4" WidthRequest="4" Fill="#FFFFFF"/>
+				</HorizontalStackLayout>
+			</Grid>
+
+		</Grid>
+
+	</Grid>
+
+</ContentPage>

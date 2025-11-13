@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodMap.LocationPermissionPage"
+             BackgroundColor="#FFFFFF"
+             Shell.NavBarIsVisible="False">
+
+	<Grid>
+		<VerticalStackLayout Padding="30,0,30,30"
+                             VerticalOptions="Center"
+                             Spacing="30">
+
+			<!-- Logo -->
+			<Image Source="logo_foodmap.jpg"
+                   HeightRequest="120"
+                   WidthRequest="120"
+                   Aspect="AspectFit"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,20"/>
+
+			<!-- App Name -->
+			<Label Text="FoodMap"
+                   FontFamily="Arial"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   TextColor="#280374"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,60"/>
+
+			<!-- Permission Message -->
+			<Label Text="Autoriser FoodMap à accéder à votre localisation ?"
+                   FontFamily="Roboto"
+                   FontSize="18"
+                   TextColor="#280374"
+                   HorizontalTextAlignment="Center"
+                   LineBreakMode="WordWrap"
+                   Margin="20,0"/>
+
+			<!-- Accept Button -->
+			<Button Text="Accepter"
+                    BackgroundColor="#3A2A97"
+                    TextColor="#FFFFFF"
+                    FontFamily="Roboto"
+                    FontSize="18"
+                    FontAttributes="Bold"
+                    HeightRequest="55"
+                    CornerRadius="28"
+                    Margin="0,30,0,0"
+                    Clicked="OnAcceptClicked"/>
+
+			<!-- Don't Ask Again Checkbox -->
+			<HorizontalStackLayout HorizontalOptions="Center" Spacing="10">
+				<CheckBox x:Name="DontAskCheckbox"
+                          Color="#3A2A97"
+                          IsChecked="False"/>
+				<Label Text="Ne plus me demander"
+                       FontFamily="Roboto"
+                       FontSize="16"
+                       TextColor="#280374"
+                       VerticalOptions="Center">
+					<Label.GestureRecognizers>
+						<TapGestureRecognizer Tapped="OnCheckboxLabelTapped"/>
+					</Label.GestureRecognizers>
+				</Label>
+			</HorizontalStackLayout>
+
+		</VerticalStackLayout>
+	</Grid>
+
+</ContentPage>

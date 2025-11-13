@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodMap.RestaurantDetailPage"
+             BackgroundColor="#FFFFFF"
+             Shell.NavBarIsVisible="False">
+
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<!-- Header -->
+		<Grid Grid.Row="0"
+              BackgroundColor="#B6D4B0"
+              Padding="20,50,20,15">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="Auto"/>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="Auto"/>
+			</Grid.ColumnDefinitions>
+
+			<!-- Menu Icon (3 lines) -->
+			<Grid Grid.Column="0"
+                  HeightRequest="30"
+                  WidthRequest="30"
+                  VerticalOptions="Center">
+				<VerticalStackLayout Spacing="5" VerticalOptions="Center">
+					<BoxView HeightRequest="3" WidthRequest="30" Color="#FFFFFF" CornerRadius="1.5"/>
+					<BoxView HeightRequest="3" WidthRequest="30" Color="#FFFFFF" CornerRadius="1.5"/>
+					<BoxView HeightRequest="3" WidthRequest="30" Color="#FFFFFF" CornerRadius="1.5"/>
+				</VerticalStackLayout>
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="OnMenuTapped"/>
+				</Grid.GestureRecognizers>
+			</Grid>
+
+			<!-- User Name -->
+			<Label Grid.Column="1"
+                   Text="Alex"
+                   FontFamily="Roboto"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#FFFFFF"
+                   VerticalOptions="Center"
+                   Margin="15,0,0,0"/>
+
+			<!-- Cart Icon with Badge -->
+			<Grid Grid.Column="2" VerticalOptions="Center">
+				<!-- Cart Icon SVG-like using shapes -->
+				<Grid HeightRequest="30" WidthRequest="30">
+					<!-- Simple cart representation -->
+					<Path Data="M 5,8 L 8,8 L 10,20 L 25,20 L 28,12 L 10,12"
+                          Stroke="#FFFFFF"
+                          StrokeThickness="2"
+                          Fill="Transparent"/>
+					<Ellipse HeightRequest="3" WidthRequest="3" Fill="#FFFFFF"
+                             HorizontalOptions="Start" VerticalOptions="End"
+                             Margin="12,0,0,3"/>
+					<Ellipse HeightRequest="3" WidthRequest="3" Fill="#FFFFFF"
+                             HorizontalOptions="End" VerticalOptions="End"
+                             Margin="0,0,8,3"/>
+				</Grid>
+
+				<Grid.GestureRecognizers>
+					<TapGestureRecognizer Tapped="OnCartTapped"/>
+				</Grid.GestureRecognizers>
+
+				<!-- Badge -->
+				<Border BackgroundColor="#FFFFFF"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12"
+                        HeightRequest="22"
+                        WidthRequest="22"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        Margin="0,-5,-5,0">
+					<Label Text="0"
+                           FontFamily="Roboto"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           TextColor="#3A2A97"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+				</Border>
+			</Grid>
+		</Grid>
+
+		<!-- Content -->
+		<ScrollView Grid.Row="1">
+			<VerticalStackLayout Spacing="0">
+
+				<!-- Restaurant Image Carousel -->
+				<Grid>
+					<CarouselView HeightRequest="280"
+                                  IndicatorView="indicatorView">
+						<CarouselView.ItemsSource>
+							<x:Array Type="{x:Type x:String}">
+								<x:String>restaurant_detail.jpg</x:String>
+							</x:Array>
+						</CarouselView.ItemsSource>
+						<CarouselView.ItemTemplate>
+							<DataTemplate>
+								<Image Source="{Binding .}"
+                                       Aspect="AspectFill"/>
+							</DataTemplate>
+						</CarouselView.ItemTemplate>
+					</CarouselView>
+
+					<!-- Carousel Indicators -->
+					<IndicatorView x:Name="indicatorView"
+                                   IndicatorColor="#D0D0D0"
+                                   SelectedIndicatorColor="#FFFFFF"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="End"
+                                   Margin="0,0,0,15"/>
+				</Grid>
+
+				<!-- Restaurant Info Card -->
+				<Grid Padding="20,20">
+					<Grid.RowDefinitions>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+						<RowDefinition Height="Auto"/>
+					</Grid.RowDefinitions>
+					<Grid.ColumnDefinitions>
+						<ColumnDefinition Width="*"/>
+						<ColumnDefinition Width="Auto"/>
+					</Grid.ColumnDefinitions>
+
+					<!-- Restaurant Name -->
+					<Label Grid.Row="0" Grid.Column="0"
+                           Text="Restaurant Name"
+                           FontFamily="Roboto"
+                           FontSize="24"
+                           FontAttributes="Bold"
+                           TextColor="#280374"/>
+
+					<!-- Cuisine Type -->
+					<Label Grid.Row="1" Grid.Column="0"
+                           Text="Mexican"
+                           FontFamily="Roboto"
+                           FontSize="15"
+                           TextColor="#000000"
+                           Margin="0,5,0,0"/>
+
+					<!-- Minimum Order -->
+					<Label Grid.Row="2" Grid.Column="0"
+                           Text="$25 Minimum Order"
+                           FontFamily="Roboto"
+                           FontSize="15"
+                           TextColor="#000000"
+                           Margin="0,3,0,0"/>
+
+					<!-- Rating -->
+					<HorizontalStackLayout Grid.Row="3" Grid.Column="0"
+                                          Spacing="8"
+                                          Margin="0,8,0,0">
+						<HorizontalStackLayout Spacing="2">
+							<Label Text="?" FontSize="18" TextColor="#FFB800"/>
+							<Label Text="?" FontSize="18" TextColor="#FFB800"/>
+							<Label Text="?" FontSize="18" TextColor="#FFB800"/>
+							<Label Text="?" FontSize="18" TextColor="#FFB800"/>
+							<Label Text="?" FontSize="18" TextColor="#FFB800"/>
+						</HorizontalStackLayout>
+						<Label Text="4.2 out of 5"
+                               FontFamily="Roboto"
+                               FontSize="15"
+                               TextColor="#000000"
+                               VerticalOptions="Center"/>
+					</HorizontalStackLayout>
+
+					<!-- Map Button -->
+					<Border Grid.Row="0" Grid.Column="1"
+                            Grid.RowSpan="4"
+                            BackgroundColor="#B6D4B0"
+                            StrokeThickness="0"
+                            StrokeShape="RoundRectangle 12"
+                            HeightRequest="85"
+                            WidthRequest="85"
+                            VerticalOptions="Center"
+                            Padding="0">
+						<VerticalStackLayout Spacing="5"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center">
+							<!-- Map Pin Icon -->
+							<Grid HeightRequest="38" WidthRequest="38">
+								<Path Data="M 18,2 A 8,8 0 0,0 10,10 C 10,15 18,24 18,24 C 18,24 26,15 26,10 A 8,8 0 0,0 18,2 Z M 18,13 A 3,3 0 1,1 18,7 A 3,3 0 1,1 18,13 Z"
+                                      Fill="#DB462E"
+                                      Aspect="Uniform"/>
+							</Grid>
+							<Label Text="MAP"
+                                   FontFamily="Roboto"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   TextColor="#DB462E"
+                                   HorizontalOptions="Center"/>
+						</VerticalStackLayout>
+						<Border.GestureRecognizers>
+							<TapGestureRecognizer Tapped="OnMapTapped"/>
+						</Border.GestureRecognizers>
+					</Border>
+				</Grid>
+
+				<!-- Menu Items List -->
+				<VerticalStackLayout Padding="0" Spacing="0">
+
+					<!-- Side Item 1 -->
+					<Grid Padding="20,15" BackgroundColor="#FFFFFF">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<Label Grid.Column="0"
+                               Text="Sides"
+                               FontFamily="Roboto"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#280374"
+                               VerticalOptions="Center"/>
+
+						<Border Grid.Column="1"
+                                BackgroundColor="#B6D4B0"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 8"
+                                HeightRequest="40"
+                                WidthRequest="40"
+                                VerticalOptions="Center"
+                                Padding="0">
+							<Label Text="+"
+                                   FontFamily="Roboto"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFFFFF"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Margin="0,-3,0,0"/>
+							<Border.GestureRecognizers>
+								<TapGestureRecognizer Tapped="OnAddItemTapped"/>
+							</Border.GestureRecognizers>
+						</Border>
+					</Grid>
+					<BoxView HeightRequest="1" Color="#E5E5E5"/>
+
+					<!-- Side Item 2 -->
+					<Grid Padding="20,15" BackgroundColor="#FFFFFF">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<Label Grid.Column="0"
+                               Text="Sides"
+                               FontFamily="Roboto"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#280374"
+                               VerticalOptions="Center"/>
+
+						<Border Grid.Column="1"
+                                BackgroundColor="#B6D4B0"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 8"
+                                HeightRequest="40"
+                                WidthRequest="40"
+                                VerticalOptions="Center"
+                                Padding="0">
+							<Label Text="+"
+                                   FontFamily="Roboto"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFFFFF"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Margin="0,-3,0,0"/>
+						</Border>
+					</Grid>
+					<BoxView HeightRequest="1" Color="#E5E5E5"/>
+
+					<!-- Side Item 3 -->
+					<Grid Padding="20,15" BackgroundColor="#FFFFFF">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<Label Grid.Column="0"
+                               Text="Sides"
+                               FontFamily="Roboto"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#280374"
+                               VerticalOptions="Center"/>
+
+						<Border Grid.Column="1"
+                                BackgroundColor="#B6D4B0"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 8"
+                                HeightRequest="40"
+                                WidthRequest="40"
+                                VerticalOptions="Center"
+                                Padding="0">
+							<Label Text="+"
+                                   FontFamily="Roboto"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFFFFF"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Margin="0,-3,0,0"/>
+						</Border>
+					</Grid>
+					<BoxView HeightRequest="1" Color="#E5E5E5"/>
+
+					<!-- Side Item 4 -->
+					<Grid Padding="20,15" BackgroundColor="#FFFFFF">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<Label Grid.Column="0"
+                               Text="Sides"
+                               FontFamily="Roboto"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#280374"
+                               VerticalOptions="Center"/>
+
+						<Border Grid.Column="1"
+                                BackgroundColor="#B6D4B0"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 8"
+                                HeightRequest="40"
+                                WidthRequest="40"
+                                VerticalOptions="Center"
+                                Padding="0">
+							<Label Text="+"
+                                   FontFamily="Roboto"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFFFFF"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Margin="0,-3,0,0"/>
+						</Border>
+					</Grid>
+					<BoxView HeightRequest="1" Color="#E5E5E5"/>
+
+					<!-- Side Item 5 -->
+					<Grid Padding="20,15" BackgroundColor="#FFFFFF">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<Label Grid.Column="0"
+                               Text="Sides"
+                               FontFamily="Roboto"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#280374"
+                               VerticalOptions="Center"/>
+
+						<Border Grid.Column="1"
+                                BackgroundColor="#B6D4B0"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 8"
+                                HeightRequest="40"
+                                WidthRequest="40"
+                                VerticalOptions="Center"
+                                Padding="0">
+							<Label Text="+"
+                                   FontFamily="Roboto"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFFFFF"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Margin="0,-3,0,0"/>
+						</Border>
+					</Grid>
+					<BoxView HeightRequest="1" Color="#E5E5E5"/>
+
+					<!-- Side Item 6 -->
+					<Grid Padding="20,15" BackgroundColor="#FFFFFF">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<Label Grid.Column="0"
+                               Text="Sides"
+                               FontFamily="Roboto"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#280374"
+                               VerticalOptions="Center"/>
+
+						<Border Grid.Column="1"
+                                BackgroundColor="#B6D4B0"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 8"
+                                HeightRequest="40"
+                                WidthRequest="40"
+                                VerticalOptions="Center"
+                                Padding="0">
+							<Label Text="+"
+                                   FontFamily="Roboto"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFFFFF"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Margin="0,-3,0,0"/>
+						</Border>
+					</Grid>
+					<BoxView HeightRequest="1" Color="#E5E5E5"/>
+
+					<!-- Side Item 7 -->
+					<Grid Padding="20,15" BackgroundColor="#FFFFFF">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="Auto"/>
+						</Grid.ColumnDefinitions>
+
+						<Label Grid.Column="0"
+                               Text="Sides"
+                               FontFamily="Roboto"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#280374"
+                               VerticalOptions="Center"/>
+
+						<Border Grid.Column="1"
+                                BackgroundColor="#B6D4B0"
+                                StrokeThickness="0"
+                                StrokeShape="RoundRectangle 8"
+                                HeightRequest="40"
+                                WidthRequest="40"
+                                VerticalOptions="Center"
+                                Padding="0">
+							<Label Text="+"
+                                   FontFamily="Roboto"
+                                   FontSize="28"
+                                   FontAttributes="Bold"
+                                   TextColor="#FFFFFF"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   Margin="0,-3,0,0"/>
+						</Border>
+					</Grid>
+
+				</VerticalStackLayout>
+
+			</VerticalStackLayout>
+		</ScrollView>
+
+	</Grid>
+
+</ContentPage>

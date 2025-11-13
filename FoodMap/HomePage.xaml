@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FoodMap.HomePage"
+             BackgroundColor="#FFFFFF"
+             Shell.NavBarIsVisible="False">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Grid Grid.Row="0" 
+              BackgroundColor="#B6D4B0" 
+              Padding="20,50,20,15">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Menu Icon (3 lines) -->
+            <Grid Grid.Column="0" 
+                  HeightRequest="30"
+                  WidthRequest="30"
+                  VerticalOptions="Center">
+                <VerticalStackLayout Spacing="5" VerticalOptions="Center">
+                    <BoxView HeightRequest="3" WidthRequest="30" Color="#FFFFFF" CornerRadius="1.5"/>
+                    <BoxView HeightRequest="3" WidthRequest="30" Color="#FFFFFF" CornerRadius="1.5"/>
+                    <BoxView HeightRequest="3" WidthRequest="30" Color="#FFFFFF" CornerRadius="1.5"/>
+                </VerticalStackLayout>
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnMenuTapped"/>
+                </Grid.GestureRecognizers>
+            </Grid>
+
+            <!-- User Name -->
+            <Label Grid.Column="1"
+                   Text="Alex"
+                   FontFamily="Roboto"
+                   FontSize="20"
+                   FontAttributes="Bold"
+                   TextColor="#FFFFFF"
+                   VerticalOptions="Center"
+                   Margin="15,0,0,0"/>
+
+            <!-- Cart Icon with Badge -->
+            <Grid Grid.Column="2" VerticalOptions="Center">
+                <!-- Cart Icon SVG-like using shapes -->
+                <Grid HeightRequest="30" WidthRequest="30">
+                    <!-- Simple cart representation -->
+                    <Path Data="M 5,8 L 8,8 L 10,20 L 25,20 L 28,12 L 10,12"
+                          Stroke="#FFFFFF"
+                          StrokeThickness="2"
+                          Fill="Transparent"/>
+                    <Ellipse HeightRequest="3" WidthRequest="3" Fill="#FFFFFF" 
+                             HorizontalOptions="Start" VerticalOptions="End"
+                             Margin="12,0,0,3"/>
+                    <Ellipse HeightRequest="3" WidthRequest="3" Fill="#FFFFFF" 
+                             HorizontalOptions="End" VerticalOptions="End"
+                             Margin="0,0,8,3"/>
+                </Grid>
+
+                <Grid.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnCartTapped"/>
+                </Grid.GestureRecognizers>
+
+                <!-- Badge -->
+                <Border BackgroundColor="#FFFFFF"
+                        StrokeThickness="0"
+                        StrokeShape="RoundRectangle 12"
+                        HeightRequest="22"
+                        WidthRequest="22"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        Margin="0,-5,-5,0">
+                    <Label Text="0"
+                           FontFamily="Roboto"
+                           FontSize="12"
+                           FontAttributes="Bold"
+                           TextColor="#3A2A97"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"/>
+                </Border>
+            </Grid>
+        </Grid>
+
+        <!-- Content with Binding -->
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Categories}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HeightRequest="250">
+                            <Image Source="{Binding Image}"
+                                   Aspect="AspectFill"/>
+
+                            <!-- Overlay semi-transparent -->
+                            <BoxView Color="#FFFFFF" Opacity="0.3"/>
+
+                            <Label Text="{Binding Name}"
+                                   FontFamily="Roboto"
+                                   FontSize="36"
+                                   FontAttributes="Bold"
+                                   TextColor="#3A2A97"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"/>
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnCategoryTapped" CommandParameter="{Binding .}"/>
+                            </Grid.GestureRecognizers>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+
+    </Grid>
+
+</ContentPage>
