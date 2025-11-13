@@ -5,7 +5,7 @@ Application mobile de livraison de nourriture développée avec .NET MAUI, perme
 ## 📱 Aperçu de l'application
 
 ### 1. Page de Connexion (LoginPage)
-![LoginPage](Resources/Images/screenshots/login_page.jpg)
+![LoginPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/login_page.jpg)
 
 **Fonctionnalités :**
 - Connexion avec email/pseudonyme et mot de passe
@@ -14,7 +14,7 @@ Application mobile de livraison de nourriture développée avec .NET MAUI, perme
 - Design épuré avec logo FoodMap
 
 ### 2. Permission de Localisation (LocationPermissionPage)
-![LocationPermissionPage](Resources/Images//location_permission.jpg)
+![LocationPermissionPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/location_permission.jpg)
 
 **Fonctionnalités :**
 - Demande d'autorisation de localisation
@@ -22,7 +22,7 @@ Application mobile de livraison de nourriture développée avec .NET MAUI, perme
 - Interface simple et claire
 
 ### 3. Page d'Accueil (HomePage)
-![HomePage](Resources/Images/screenshots/home_page.jpg)
+![HomePage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/home_page.jpg)
 
 **Fonctionnalités :**
 - Header avec nom d'utilisateur (Alex)
@@ -32,7 +32,7 @@ Application mobile de livraison de nourriture développée avec .NET MAUI, perme
 - Barre de navigation inférieure avec 5 icônes
 
 ### 4. Détails du Restaurant (RestaurantDetailPage)
-![RestaurantDetailPage](Resources/Images/screenshots/restaurant_detail.jpg)
+![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/restaurant_detail.jpg)
 
 **Fonctionnalités :**
 - Carrousel d'images du restaurant
