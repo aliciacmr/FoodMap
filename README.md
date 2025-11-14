@@ -36,11 +36,11 @@ Application mobile de livraison de nourriture développée avec .NET MAUI, perme
 
 
 ### RENDU FINAL - FOODMAP - DETAIL RESTAURANT
-![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C1.jpg)
-![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C2.jpg)
-![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C3.jpg)
-![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C4.jpg)
-![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C5.jpg)
+![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C1.png)
+![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C2.png)
+![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C3.png)
+![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C4.png)
+![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C5.png)
 
 **Fonctionnalités :**
 - Carrousel d'images du restaurant
