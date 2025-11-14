@@ -1,7 +1,7 @@
 ﻿# 🍽️ FoodMap - Application .NET MAUI
 
 Application mobile de livraison de nourriture développée avec .NET MAUI, permettant aux utilisateurs de découvrir et commander depuis des restaurants et supermarchés locaux.
-
+##  DESIGN FIGMA
 ## 📱 Aperçu de l'application
 
 ### 1. Page de Connexion (LoginPage)
@@ -33,6 +33,14 @@ Application mobile de livraison de nourriture développée avec .NET MAUI, perme
 
 ### 4. Détails du Restaurant (RestaurantDetailPage)
 ![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/restaurant_detail.jpg)
+
+
+### RENDU FINAL - FOODMAP - DETAIL RESTAURANT
+![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C1.jpg)
+![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C2.jpg)
+![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C3.jpg)
+![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C4.jpg)
+![RestaurantDetailPage](https://github.com/aliciacmr/FoodMap/blob/master/FoodMap/Resources/Images/screenshots/C5.jpg)
 
 **Fonctionnalités :**
 - Carrousel d'images du restaurant
